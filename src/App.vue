@@ -1,27 +1,21 @@
 <template>
-  <div id="app">
-    <HelloWorld msg="Hello Vue in CodeSandbox!" />
-  </div>
+  <FormProvider :form="form">
+    <Field name="input" :component="[Input]" />
+  </FormProvider>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import { Input } from "iview";
+import { createForm } from "@formily/core";
+import { FormProvider, Field } from "@formily/vue";
 
 export default {
-  name: "App",
-  components: {
-    HelloWorld,
+  components: { FormProvider, Field },
+  data() {
+    return {
+      Input,
+      form: createForm(),
+    };
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
